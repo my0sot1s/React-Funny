@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Image, StyleSheet, Dimensions, StatusBar, ListView } from 'react-native'
 import Card from './modules/Card';
-import Ex from './modules/Ex'
 import Interactable from 'react-native-interactable';
 const { height, width } = Dimensions.get("screen")
 
@@ -13,12 +12,12 @@ class BaseApp extends Component {
       dataSource: ds.cloneWithRows([{ color: '#ba68c8' }, { color: '#52a43a' }, { color: '#f7aa17' }, { color: '#ef5350' }]),
     };
   }
-  renderRow(data) {
+  renderRow(rowData, sectionId, rowId) {
     return (
       <Interactable.View
         horizontalOnly={true}
         snapPoints={[{ x: 360 }, { x: 0 }, { x: -360 }]}>
-        <Card color={data.color} />
+        <Card color={rowData.color} key={rowId} />
       </Interactable.View>
     );
   }
@@ -31,7 +30,6 @@ class BaseApp extends Component {
             dataSource={this.state.dataSource}
             renderRow={this.renderRow.bind(this)}
           />
-          {/* <Ex /> */}
         </App>
       </View>
     );
