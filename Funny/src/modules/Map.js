@@ -48,7 +48,7 @@ export const RenderMaps = props => (
 
       <Text style={styles.timeStart} > 60 min 00 sec</Text>
 
-      <TouchableOpacity style={styles.btn}>
+      <TouchableOpacity style={styles.btn} onPress={props.onPress}>
         <Text style={{ fontSize: 14, color: '#3B424A', textAlign: 'center' }}>START</Text>
       </TouchableOpacity>
     </View>

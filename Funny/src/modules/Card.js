@@ -24,7 +24,6 @@ class Cards extends Component {
     })
   }
   render() {
-    this._deltaX = new Animated.Value(0);
     return (
       <View
         style={{
@@ -37,7 +36,7 @@ class Cards extends Component {
           marginVertical: 5,
         }}>
         <TouchableOpacity onPress={this.onPress.bind(this)} style={{ width: 0.95 * width }} >
-          {this.state.collapsed ? <Detail {...this.props} /> : <Infor {...this.props} active={this.state.active} />}
+          {this.state.collapsed ? <Detail {...this.props} onPress={this.onPress.bind(this)} /> : <Infor {...this.props} active={this.state.active} />}
         </TouchableOpacity>
       </View >
     )
@@ -69,7 +68,7 @@ class Detail extends Component {
           <Text style={{ flex: 2, color: '#ffffff', fontSize: 17, textAlign: 'center' }}># 2618-3157</Text>
           <Text style={{ flex: 1, color: '#ffffff', fontSize: 17, textAlign: 'right', marginRight: 10 }}>$25</Text>
         </View>
-        {this.state.showMap ? <RenderDetail onPress={this.changeView.bind(this)} /> : <RenderMaps />}
+        {this.state.showMap ? <RenderDetail onPress={this.changeView.bind(this)} /> : <RenderMaps onPress={this.props.onPress} />}
       </View>
     );
   }
